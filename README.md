@@ -1,5 +1,5 @@
 # NOTES
-My notes on technical topics
+My notes on technical topics.
 All are markdown files
 
 Split into two subdirs:
