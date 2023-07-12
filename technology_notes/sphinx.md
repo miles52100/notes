@@ -20,6 +20,20 @@ e.g.
    Content of the directive
 ```
 
+
+To insert an image. The file path to the image is either relative or absolute from the top sourcedir
+So e.g. if we have a directory `sourcedir/Images` containing a **PNG** file `logo.png`
+
+Then we'd insert that here (we're showing some options, e.g. we want it one-qarter the size of the *PNG*)
+
+```
+.. image:: /Images/logo.png
+   :class: with-shadow
+   :scale: 25 %
+   :align: right
+```
+
+
 *domain*
 A collection of markup to describe and link to objects belonging together
 e.g. elements of a programming language. Default domain is 'py:' for Python
@@ -31,6 +45,15 @@ Basic syntax is:
 
 ```
 :rolename: `content`
+```
+
+For example
+
+```
+1  :php:`$result = $a + 23;`
+2  :typoscript:`lib.hello.value = Hello World!`
+3  :file:`/etc/passwd`
+4  :kbd:`ctrl` +  :kbd:`s`
 ```
 
 *Literal blocks*
@@ -105,6 +128,48 @@ Two ways to refer to labels:
     Look at the :ref:`example_linl <explicit-ref-label>`
 
     ```
+
+*footnotes*
+  For footnotes use `[#name]_` to mark the footnote location. Add the footnote at the bottom of the document
+  after a "Footnotes" rubric heading
+
+  ```
+  Here is a latin [#f1]_ word ipsum [#f2]_
+
+
+  .. rubric:: Footnotes
+
+  .. [#f1] The first footnote
+  .. [#f1] A placeholder text, doesn't mean anything in Latin, Lorem Ipsum is the most common placeholder
+
+  ```
+
+*unicode*
+The easiest way is to directly write them as Unicode characters, the default encoding is UTF-8.
+To write them directly in VSCode it's easiest to install the extension "Insert Unicode", the search from the Command Palette for `insert from hex`  and enter the UTF-8 hex encoding of the Unicode character.
+E.g. for ©, you enter 'a9' as the hex.
+
+
+Another approach is to use substitution and the unicode directive. For example
+
+```
+Copyright |copy| 2003, |BogusCorp(TM)| |---|
+all rights reserved.
+
+
+.. |copy| unicode:: 0xa9 .. copyright sign
+.. |BogusCorp(TM)| unicode:: BogusCorp U+2122
+   .. with trademark - a comment
+.. |---| unicode:: U+02014 .. em dash
+  :trim:  .. equiv to ltrim and rtrim to remove whitespace
+```
+
+*warning*
+
+.. warning::
+   This is your *FINAL* warning
+
+
 
 ## Installing
 See the methods in the official documentation under References
