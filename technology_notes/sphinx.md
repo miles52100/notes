@@ -88,6 +88,23 @@ Two ways to refer to labels:
      :ref:\`Link title <label-name>\`
      '''
 
+    An example
+    
+    ```
+    .. This is a comment - an explicit markup block which is an invalid construct.
+    .. 
+       This is part of example_page.rst
+       And a multiline comment
+    
+    .. _explicit-ref-label:
+    Example usage is blah.
+
+    To reference that label:
+    .. We assume this is e.g. the index.rst file snippet
+
+    Look at the :ref:`example_linl <explicit-ref-label>`
+
+    ```
 
 ## Installing
 See the methods in the official documentation under References
