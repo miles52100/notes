@@ -6,7 +6,7 @@ Although mainly a documenting tool (for code?), it can be used to
 generate blogs, homepages, and even books.
 
 ### ReST
-There are 
+There are:
 
  *directives*
 A ReST markup element that allows for marking a block of content with special meaning
@@ -14,17 +14,15 @@ A ReST markup element that allows for marking a block of content with special me
 e.g.
 
 ```
-.. directivenanme:: argument ...
+.. directivename:: argument ...
    :option: value
 
    Content of the directive
 ```
 
 
-To insert an image. The file path to the image is either relative or absolute from the top sourcedir
-So e.g. if we have a directory `sourcedir/Images` containing a **PNG** file `logo.png`
-
-Then we'd insert that here (we're showing some options, e.g. we want it one-qarter the size of the *PNG*)
+To insert an image. The file path to the image is either relative or absolute from the top sourcedir.
+E.g., if we have a directory `sourcedir/Images` containing a **PNG** file `logo.png` then we would insert that here (we're showing some options, e.g. we want it one-qarter the size of the *PNG*)
 
 ```
 .. image:: /Images/logo.png
@@ -35,8 +33,7 @@ Then we'd insert that here (we're showing some options, e.g. we want it one-qart
 
 
 *domain*
-A collection of markup to describe and link to objects belonging together
-e.g. elements of a programming language. Default domain is 'py:' for Python
+A collection of markup to describe and link to objects belonging together, e.g., elements of a programming language. The default domain is 'py:' for Python
 
 
 *role*
