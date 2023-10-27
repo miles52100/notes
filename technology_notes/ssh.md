@@ -193,7 +193,7 @@ To use dynamic forwarding, use the `-D` flag
 ssh -D local_port username@server.com
 ```
 
-For example suppose you have an access to an SSH server at `ssh.yourhome.com` and username on the SSH server is `bob`. You want to sue dynamic forwarding to open SOCKS proxy at port 8888 on the current PC. You'd run the command:
+For example suppose you have access to an SSH server at `ssh.yourhome.com` and your username on the SSH server is `bob`. You want to use dynamic forwarding to open a SOCKS proxy at port 8888 on the current PC. You'd run the command:
 
 ```
 ssh -D 8888 bob@ssh.yourhome.com
