@@ -12,7 +12,7 @@ See [here](https://thebabar.medium.com/essential-guide-to-foundation-models-and-
 
 ## Hugging face leader board
 
-Currently topping it is Falcon LLM, developed by Technology Innovation Institute, described as a *leading global research center dedicated to pushing the frontiers of knowledge.*
+Currently topping it is Falcon 180B LLM, developed by Technology Innovation Institute, described as a *leading global research center dedicated to pushing the frontiers of knowledge.*
 It is centered in Abu Dhabi, UAE.
 
 
