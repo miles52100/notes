@@ -201,4 +201,6 @@ In reST
 
 * [Sphinx Documentation](https://www.sphinx-doc.org/en/master/index.html)
 
+* [ReST cheat sheet](https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/CheatSheet.html)
+
 * [ReStructuredTex](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html)

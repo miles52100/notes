@@ -26,6 +26,13 @@ Infrastructure processing chips
 See [here](https://www.theregister.com/2021/11/24/infrastructure_processing_units/) for a Register article on an interesting trend in data centres.
 See [blog](https://blogs.nvidia.com/blog/2021/10/29/what-is-a-smartnic/)
 
+## Apple's Neural Engine
+A specialized NN unit called the Apple Neural Engine (ANE) that's faster and more 
+efficient than CPU or GPU.
+
+See [here](https://www.makeuseof.com/what-is-a-neural-engine-how-does-it-work/?newsletter_popup=1)
+
+
 
 ## Software Defined Networks, SDN
 
@@ -43,3 +50,7 @@ See [here](https://cloudswit.ch/blogs/what-you-should-know-about-p4-programming-
 ## Solid state drives, SSD
 
 See [here](https://www.digitaltrends.com/computing/best-nvme-ssd/#h-EU822w49gE)
+and [here](https://www.pcworld.com/article/394939/cant-buy-a-gpu-3-alternative-upgrades-to-make-your-gaming-pc-kick-butt.html)
+
+
+

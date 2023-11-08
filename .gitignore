@@ -1,0 +1,10 @@
+# Ignore anything that is not a markdown file, indicated by .md extensionq
+/*
+!.gitignore
+!/data_science_notes
+!/technology_notes
+technology_notes/*
+!technology_notes/*.md
+data_science_notes/*
+!data_science_notes/*.md
+

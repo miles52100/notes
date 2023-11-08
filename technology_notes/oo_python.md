@@ -99,7 +99,7 @@ MyClass.display_count() # output is 2
 
 ### Mixin
 Refernce can be found [here](https://www.pythontutorial.net/python-oop/python-mixin/)
-
+See also [here](https://dev.to/bikramjeetsingh/write-composable-reusable-python-classes-using-mixins-6lj)
 A `mixin` is a `class` that provides method implementations for reuse by multiple related child classes. But the inheritance is not implying an 'is-a' relationship.
 
 
