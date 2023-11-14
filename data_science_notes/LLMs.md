@@ -15,10 +15,18 @@ See [here](https://thebabar.medium.com/essential-guide-to-foundation-models-and-
 Currently topping it is Falcon 180B LLM, developed by Technology Innovation Institute, described as a *leading global research center dedicated to pushing the frontiers of knowledge.*
 It is centered in Abu Dhabi, UAE.
 
+## Tokenization
+[Tokenization algorithms explained](https://towardsdatascience.com/tokenization-algorithms-explained-e25d5f4322ac)
 
 
+
+---
+---
 ### References
 
 [puresinsight.com](file:///Users/miles52100/Downloads/E-Book-Unleashing-AI-Powered-Search-Pureinsights.pdf)
 
 [Wikipedia list of LLMs](https://en.wikipedia.org/wiki/Large_language_model)
+
+[Impact of Tokenization on LM](https://arxiv.org/pdf/2204.08832.pdf)
+

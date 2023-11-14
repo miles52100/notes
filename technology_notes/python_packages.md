@@ -88,6 +88,12 @@ v
   * Poetry - modern tool for Python package management. 
     Simplifies the process of creation, managment and publishing packages.
 See [guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry/#:~:text=The%20tutorial%20will%20guide%20you%20through%20the%20process,package%20configurations%2C%20and%20write%20tests%20for%20the%20package.)
+    [How to organise a Python project with poetry for a command line script](https://stackoverflow.com/questions/62572961/how-to-organize-a-python-project-with-poetry-for-a-command-line-script#:~:text=I%20would%20suggest%20the%20following%20structure%3A%20packagename%20%E2%94%9C%E2%94%80%E2%94%80,test_packagename.py%20%E2%94%94%E2%94%80%E2%94%80%20pyproject.toml%20The%20pyproject.toml%20looks%20like%20this%3A)
+
+    [Poetry docs](https://python-poetry.org/docs/basic-usage/)
+    
+    [Poetry guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry/#:~:text=The%20tutorial%20will%20guide%20you%20through%20the%20process,package%20configurations%2C%20and%20write%20tests%20for%20the%20package.)
+
 
 ## ML packages
 
