@@ -206,3 +206,5 @@ In reST
 * [ReStructuredTex](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html)
 
 * [furo Theme in Sphinx](https://pradyunsg.me/furo/quickstart/)
+
+* [Beginner's guide to documentaion](https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/)

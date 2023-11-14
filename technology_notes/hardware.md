@@ -33,6 +33,26 @@ efficient than CPU or GPU.
 See [here](https://www.makeuseof.com/what-is-a-neural-engine-how-does-it-work/?newsletter_popup=1)
 
 
+## ARM64 vs AMD64
+
+Both are Instruction Set Architectures, ISA.
+
+ARM64 developed by ARM Holdings
+
+AMD64 is a 64-bit extension of the x86 ISA for microprocessors.
+First implemented by AMD in 2003, and since adoptd by many companies incl.
+Intel, and VIA Technologies.
+
+Comparison of these two can be found [here](https://allthedifferences.com/difference-between-arm64-and-amd64-which-is-faster/)
+
+The main difference between these two is 
+
+  * ARM64 is a RISC - Reduced Instruction Set Computing architecture
+  * AMD64 is a CISC - Complex Instruction Set Computing architecture
+
+  
+
+
 
 ## Software Defined Networks, SDN
 

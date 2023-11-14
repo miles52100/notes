@@ -68,7 +68,7 @@ A short note on some python packages and what they do.
 
 * typing module
 Runtime support typehints. See [here](https://docs.python.org/3/library/typing.html#building-generic-types)
-
+v
 
 ## Other
 
@@ -83,8 +83,11 @@ Runtime support typehints. See [here](https://docs.python.org/3/library/typing.h
   
   See [lumache](file:///Users/miles52100/Documents/Code/TmpCode/sphinx_example/docs/build/html/usage.html)
 
+## Package Management
 
-
+  * Poetry - modern tool for Python package management. 
+    Simplifies the process of creation, managment and publishing packages.
+See [guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry/#:~:text=The%20tutorial%20will%20guide%20you%20through%20the%20process,package%20configurations%2C%20and%20write%20tests%20for%20the%20package.)
 
 ## ML packages
 
