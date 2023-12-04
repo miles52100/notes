@@ -51,6 +51,9 @@ mech
 For a good reference about the distinction between static and class methods see
 [here](https://sparkbyexamples.com/python/python-difference-between-staticmethod-and-classmethod/)
 
+This is also a good reference - [here](https://www.pythonpool.com/python-cls-vs-self/#:~:text=Using%20the%20cls%20keyword%2C%20we%20can%20only%20access,passed%20as%20an%20argument%20to%20the%20instance%20method.)
+
+
 ### static methods
 A staticmethod in Python is a special type of method that's 
 

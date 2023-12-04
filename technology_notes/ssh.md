@@ -21,10 +21,76 @@ ending added.
   * It's a good idea to move the key pair to '~/.ssh'
 
   * If you chose a non-default filename (giving the `-f` argument) you need to add it to the ssh-agent:
+
+  ### SSH agent
+  See some of the references for useful information on the agent.
+
+  You need to start an SSH agent and then add private keys to the agent.
+  If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you're password nor you doing anything.
+
+  Agent sockets are usually stored in 
   
+  `ls -l /tmp/ssh-*`
+  
+Normally an agent is started in one of the initial dot files, so that sub-shells, terminals etc all have access to the agent.
+One of the environment variables set when the agent is started is `SSH_AUTH_SOCK`, which will typically point to one of the agent sockets above.
+
+
+To add a private key to an already running agent:
+
   ```
   ssh-add <filename_private_key
   ```
+
+To see what keys have been added to the ssh-agent run
+`ssh-add -l`
+
+---
+## Reading keys 
+The default format for written keys is `OpenSSH-specific` (for open-ssh versions >= 6.5, `ssh -V` tells you what version you have)
+
+The public key is base64-encoded and so readable as a string.
+`cat <pubkey>.pub` works.
+The private key is a binary file and so to read it you need to code.
+
+Typically you'll need an `openssl` command to do this, which means knowing the type of private key. For example if you know it's an RSA key then
+
+    openssl rsa -text -noout -in <path-to-priv-key>
+
+To get that key type you'll need 
+
+    ssh-keygen -lf <path-to-key>
+(works with pub or priv)
+Shows the type of key at end as well as printing out fingerprint.
+
+For OpenSSH-specific format you can just read it as its base-64 encoded
+
+
+
+### key fingerprint
+A fingerprint of the public key.
+
+Typically on key generation this will take the form of
+
+    [type:] [hexadecimal encoding of fingerprint] [comment]
+    SHA256:k577E0vW1wfUBNIq7gEKCNiTtb5HqjG9hxsMeqe3zYQ my edward curve key
+
+
+To obtain the fingerprint:
+
+`ssh-keygen -l -f <path-to-key>.pub`
+
+
+### Key randomart
+
+See this [paper](http://users.ece.cmu.edu/~adrian/projects/validation/validation.pdf) 
+
+
+The purpose is to provide a visual alternative to validating keys rather than comparing the fingerprint strings -  the idea being any change is much esaier to spot in the randomart.
+
+To obtain the randomart 
+
+`ssh-keygen -lv -f <path-to-key>.pub`
 
 ---
 
@@ -42,6 +108,31 @@ Typically `.ssh` will contain the following:
 4. *known_hosts* A list of public keys for all hosts the ssh user has logged into. Again ideally should have read/write permissions for the owner only
 
 5. *config* a per-user configuration file - see below - again with read/write permissions for this user only.
+
+### authorized_keys
+Contains a list of public keys that are authorized to log in to the server. Used to prevent unauthorized users from connecting to the SSH server.
+Typically you'll want to store your public key in this file on the remote machine you're trying to configure for ssh conection.
+
+The file can be edited manually, but it's recommended to use `ssh-copy-id` command to add a user's public key.
+It copies the public key to the remote server's authorized_keys file, preserving any existing keys and sets correct permissions on the file to enable it to be used for SSH key-based authentication.
+
+The format of each entry is 
+`ssh-[type] [public key] [comment]`
+
+The file permissions should be set to `600`, i.e., user read and write only.
+
+
+
+### known_hosts
+A list of public keys for all hosts the ssh client has logged into.
+**check read/write** permissions
+A Typical entry:
+
+    bitbucket.tdx.gss.gov.uk ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCidjBAlZS7Bt8LWaKUGuMjR/
+    ...
+    TOgTDZeJZdcDZBPh1i188/Vcr    
+
+
 
 ### Strucutre of the '.ssh/config' file
 
@@ -61,7 +152,8 @@ Host *
  It's organised into stanzas (sections). The Host directive can contain a pattern or white-space list of patterns
 
  e.g. `10.10.0.[0-9]` matches the IP range, `!10.10.0.5` means not this host.
- The SSH client reads the configuration file stanza by stanza and the first matching stanza has precedence. So more host-specific declarations should be at the beginning of the file.
+ 
+ The SSH client reads the configuration file stanza by stanza and the **first** matching stanza has precedence. So more host-specific declarations should be at the beginning of the file.
 
 
 An example file might be, suppose as is typical, that you want to connect to a remote server, you need the username, hostname and port so you might use
@@ -123,6 +215,8 @@ Taking the example config above, if we want use all the options for Host dev, bu
 
 The `-F <alternative-config-file>` option cna be used for per-user config files
 
+
+For full information on `ssh config`, read the man page via `man 5 ssh_config`
 ---
 ---
 ## SSH Client and Server
@@ -201,3 +295,7 @@ ssh -D 8888 bob@ssh.yourhome.com
 
 You'd then configure a web browser or another application to use your local IP address (127.0.0.1) and port 8888. All traffic from the application would be redirected through the tunnel.
 
+## References
+
+  * [OpenSSH](https://www.openssh.com/)
+  * [agent-forwarding](https://web.archive.org/web/20210427181202/http://unixwiz.net/techtips/ssh-agent-forwarding.html)

@@ -43,7 +43,10 @@ AMD64 is a 64-bit extension of the x86 ISA for microprocessors.
 First implemented by AMD in 2003, and since adoptd by many companies incl.
 Intel, and VIA Technologies.
 
-Comparison of these two can be found [here](https://allthedifferences.com/difference-between-arm64-and-amd64-which-is-faster/)
+Comparison of these two can be found [here](https://allthedifferences.com/difference-between-arm64-and-amd64-which-is-faster/).
+A Visual Capitalist [chart](https://www.visualcapitalist.com/nvidia-vs-amd-vs-intel-comparing-ai-chip-sales/) is also interesting
+
+There's an interesting tech comparison between the AMD M1200 vs A100 [here](https://www.nextplatform.com/2021/12/06/stacking-up-amd-mi200-versus-nvidia-a100-compute-engines/)
 
 The main difference between these two is 
 

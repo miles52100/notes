@@ -3,6 +3,12 @@
 A basic distinction is between *relational* and *non-relational* databases.
 
 
+## TODO
+Look up polymorphism in databases.
+See [here](https://typedb.com/)
+<<<>>>
+
+
 ## Relational databases
 
 Stores data in relational tables.

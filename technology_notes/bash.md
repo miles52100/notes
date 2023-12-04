@@ -34,3 +34,8 @@ Documentation on Bash builtin commands
 ## Terminal
   
 
+### Dot files
+
+See [here](https://www.howtogeek.com/830549/whats-the-difference-between-bashrc-and-profile-on-linux/#:~:text=The%20files%20you%20really%20need%20to%20know%20about,your%20%22~%2F.bash_profile%22%20or%20%22~%2F.profile%22%20file%20for%20login%20shells.)
+
+and [here](https://hpckp.org/articles/what-not-to-add-to-your-bashrc-good-practices-for-the-end-user/)

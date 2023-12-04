@@ -83,6 +83,9 @@ v
   
   See [lumache](file:///Users/miles52100/Documents/Code/TmpCode/sphinx_example/docs/build/html/usage.html)
 
+
+  * [TOML](https://github.com/toml-lang/toml) - standing for "Tom's Obvious, Minimal Language" it aims to be a minimal configuration file format, designed to map unambiguously to a hash table. It should be easy to parse into data structures in a wide variety of languages. For a reference for using TMOL files with Python prjects see [here](https://realpython.com/python-toml/)
+
 ## Package Management
 
   * Poetry - modern tool for Python package management. 
@@ -93,6 +96,18 @@ See [guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-pa
     [Poetry docs](https://python-poetry.org/docs/basic-usage/)
     
     [Poetry guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry/#:~:text=The%20tutorial%20will%20guide%20you%20through%20the%20process,package%20configurations%2C%20and%20write%20tests%20for%20the%20package.)
+
+    
+
+  * How to tutorial for packaging a simple Python project - see [here](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+  See also [this](https://docs.python-guide.org/writing/structure/)
+
+  * An overview of Python packaging - see [here](https://packaging.python.org/en/latest/overview/)
+
+
+### Package managment structure
+
+  * Entry points specification - entry points are a mechanism for an installed distribution to advertise components it provides to be discovered and used by other code. See [here](https://packaging.python.org/en/latest/specifications/entry-points/#entry-points)
 
 
 ## ML packages
