@@ -20,7 +20,7 @@ The HPE Ezmeral software portfolio includes:
 
 For context it's worth mentioning other HPE products
 
-**HPE GreenLake** a portfolio of cloud and as-a-service solutions. Delivers cloud experience wherever your apps and ata live - edge, data centre, colos and public clouds.
+**HPE GreenLake** a portfolio of cloud and as-a-service solutions. Delivers cloud experience wherever your apps and datav live - edge, data centre, colos and public clouds.
 
 See HPE link above for other products and services.
 
@@ -52,3 +52,15 @@ Here's some links to what I think are the main documentation bits of relevance:
   * [FSMounts](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&page=reference/kubernetes/using-kubernetes/general-functionality/fs-mounts/The_FS_Mounts_Screen.html) This may not be vailable within k8s cluster.
 
   * [Kubernetes Applications](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&page=reference/kubernetes-applications/general/The_Kubernetes_Applications_Screen.html) The main application window to select e.g. Jupyter Notebook
+
+  * [Apache Spark](https://www.hpe.com/us/en/what-is/spark.html) See also [Spark](./spark.md)
+
+  * [Livy](https://support.hpe.com/hpesc/public/docDisplay?docId=a00ecp54hen_us&page=reference/kubernetes-applications/spark/Livy_Overview.html) An HTTP server that allows you to:
+   
+      * Launch Spark applications
+
+      * Submit code statements using the REST API 
+
+   Under tho hood I think it's a wrap for [Apache Livy](https://livy.incubator.apache.org/). The main point being anyone can now interact with your Spark cluster without needing to have the Spark client installed.
+
+  * [Magic Functions](https://support.hpe.com/hpesc/public/docDisplay?docId=a00ecp54hen_us&docLocale=en_US&page=reference/kubernetes/using-kubernetes/ai-ml-functionality/notebooks/Kubernetes_Notebook_Magic_Functions.html) - note the `%<magic-func>?` tells you about the magic-func and `%lsmagic` lists them.
