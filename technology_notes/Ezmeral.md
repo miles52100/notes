@@ -64,3 +64,9 @@ Here's some links to what I think are the main documentation bits of relevance:
    Under tho hood I think it's a wrap for [Apache Livy](https://livy.incubator.apache.org/). The main point being anyone can now interact with your Spark cluster without needing to have the Spark client installed.
 
   * [Magic Functions](https://support.hpe.com/hpesc/public/docDisplay?docId=a00ecp54hen_us&docLocale=en_US&page=reference/kubernetes/using-kubernetes/ai-ml-functionality/notebooks/Kubernetes_Notebook_Magic_Functions.html) - note the `%<magic-func>?` tells you about the magic-func and `%lsmagic` lists them.
+
+
+---
+## Miscellaneous Topics
+
+  * See [KServe](./kubeflow.md#kubeflow-components) - serverless inferencing.

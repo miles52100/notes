@@ -18,3 +18,10 @@ Various components offer APIs and Python SDKs, e.g.,
 
  * Kubeflow Pipelines - component specs typically YAML files
  * Kubeflow Fairing SDK - page not found
+
+
+## Kubeflow components
+
+### KServe
+    Provides a serverless inferencing service on K8s.
+    It provides: performant high performance abstractions to common ML frameworks such as: Tensorflow, XGBoost, scikit-learn, PyTorch and ONNX

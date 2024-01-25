@@ -321,3 +321,14 @@ p(\pi\mid H_1) = \frac{(1-\rho)}{2M}
 $, if $\pi\in(3.14-M,3.14+M)$ and $0$ otherwise.
 
 Substituting this into the BF gives
+$$
+BF = \frac{\frac{2M\rho}{1=\rho}\frac{\sqrt{n}}{\sigma}\Phi\left(\frac{(\overline{y}-3.14)\sqrt{n}}{\sigma}\right)}{\Phi\left(\frac{(3.14+M-\overline{y})\sqrt{n}}{\sigma}\right) - \Phi\left(\frac{(3.14-M-\overline{y})\sqrt{n}}{\sigma}\right)}
+$$
+
+*Remarks*
+
+As $M\rightarrow\infty$, $BF\rightarrow\infty$ regardless of the value of $\overline{y}$. So we could choose an apparently uninformative priorfor $H_1$ which would cause us to accept $H_0$. Moreover if the true value is $\pi=3.14+\epsilon$ and we have $M>>\epsilon$ then we'd need a much larger value of $n$ before we'd be likely  to reject $H_0$ as compated to a frequentist approach.
+
+The reason this happens is as $M\rightarrow\infty$ or $n\rightarrow\infty$ the prior is assigning probability to values of $\pi$ whose likelihood is tending to 0. 
+This doesn't matter in computing the posterior $f(\pi\mid\bf{y})$ but **does** affect the computation of the BF, because of the averaging of the likelihood over all the values of $\pi$ under $H_1$ in the denominator.
+

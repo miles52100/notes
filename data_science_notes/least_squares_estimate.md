@@ -17,11 +17,10 @@ $$
 \hat{\beta} = \frac{\sum (x_i-\overline{x})(y_i-\overline{y})}{\sum (x_i-\overline{x})^2}
 $$
 
+### The simple linear regression model
 Even better is to model it as 
 $y_i=\alpha + \beta x_i + \epsilon_i$
-with the errors $\epsilon_i$ taken as IIRV, with mean 0 and variance $\sigma^2$
-
-The likelihood of the data is computed to be
+with the errors $\epsilon_i$ taken as IIRV, with mean 0 and variance $\sigma^2$. Under *this assumption* the likelihood of the data is computed to be
 
 $$
 L = \left (\frac{1}{2\pi\sigma^2} \right)^{n/2}\exp\left\{-\frac{\sum (y_i-\alpha-\beta x_i)^2)}{2\sigma^2}\right\}`
@@ -29,16 +28,20 @@ $$
 
 Clearly maximising this expression is equivalent to minimising the squared term in the exponent and hence equivalent to the least squares estimate.
 
+To repeat, **assuming the errors are normally distributed** the MLE is equiavlent to the ordinary least squares estimator, OLS.
+
+### Properties of OLS
 The normality assumption of the errors $\epsilon_i$ allows more than to just calculate the estimates $\hat{\alpha}$ and $\hat{\beta}$. In fact we have
 
 *Theorem*
 
-    $\hat{\alpha}$ and $\hat{\beta}$ are unbased
+$\hat{\alpha}$ and $\hat{\beta}$ *are unbiased*
 
 *Proof*
     
-    $E[Y_i] = \alpha + \beta x_i$ and $E[\overline{Y}] = \alpha + \beta\overline{x}$. 
-    Using the formula for $\hat{\alpha}$ and $\hat{\beta}$ above we have
+$E[Y_i] = \alpha + \beta x_i$ and $E[\overline{Y}] = \alpha + \beta\overline{x}$. 
+
+Using the formula for $\hat{\alpha}$ and $\hat{\beta}$ above we have
 
 $$
 E[\hat{\beta}] = \frac{\sum (x_i-\overline{x})(E[Y_i]-E[\overline{Y}])}{\sum (x_i-\overline{x})^2} = \beta
@@ -48,11 +51,20 @@ Then $E[\hat{\alpha}]=E[\overline{Y}] -\beta\overline{x} = \alpha$
 
 **Theorem**
 
-Assuming the normally distributed errors
+Assuming the errors are normally distributed 
 
+**Warning** originally I copied the variance of $\hat{\alpha}$ as
 $$
 \textrm{Var}(\hat{\alpha}) = \frac{\sigma^2\overline{x}^2}{\sum (x_i-\overline{x})^2}
 $$
+I don't think this is correct.
+From books the correct variance is
+
+$$
+\textrm{Var}(\hat{\alpha}) = \frac{\sigma^2\sum x_{i}^2}{n\sum (x_i-\overline{x})^2}
+$$
+
+The rest are correct as copied
 
 $$
 \textrm{Var}(\hat{\beta}) = \frac{\sigma^2}{\sum (x_i-\overline{x})^2}
@@ -74,6 +86,16 @@ is an unbiased estimate of $\sigma^2$
 
 
 The *residual* $e_i$ is defined as the individual components of $y_i-\hat{\alpha}-\hat{\beta}x_i$.
+
+
+Under appropriate conditions these estimators converge in probability to the true values and have asymptotic normality allowing to construct confidence intervals.
+
+**WARNING**
+
+Once you have the above estimates from the data, you can make predictions with the simple linear model. The variance of the estimators might lead you to assume the variance, and hence standard error, of your predictor to follow from the variance of a sum of two RVs.
+This is **wrong** and getting a prediction confidence interval is a bit more involved.
+
+
 
 ## Extension to Multiple Parameters
 

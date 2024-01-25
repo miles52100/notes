@@ -77,3 +77,8 @@ and [here](https://www.pcworld.com/article/394939/cant-buy-a-gpu-3-alternative-u
 
 
 
+## AMD Secure Memeory Encryption
+
+See [here](https://www.kernel.org/doc/html/next/x86/amd-memory-encryption.html)
+
+White paper [here](https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/white-papers/memory-encryption-white-paper.pdf)

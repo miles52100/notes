@@ -14,9 +14,9 @@ Boosting was based on a question posed by Kearns and Valiant:
 
 Here a weak learner is a classifier that is only slightly correlated with the true classificaiton.
 
-Robert Schapire's affirmative answer to the question has in a 1990 paper has had an impact on Stats and ML community.
+Robert Schapire's affirmative answer to the question, in a 1990 paper, has had an impact on Stats and ML community.
 
-The original boosting algorithms proposed by Schapire and Freund were not adaptive, but later they developed and adaptive one
+The original boosting algorithms proposed by Schapire and Freund were not adaptive, but later they developed an adaptive one
 called *AdaBoost*, and this won the Godel prize!
 
 References
