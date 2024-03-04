@@ -1,7 +1,7 @@
 # SSH Notes
 
 ## SSH
-A standard for secuer remote logins and file transfers over untrusted networks. Provides a way to secure the data traffic of any given application using port forwarding, basically tunneling any TCP/IP port over SSH.
+A standard for secure remote logins and file transfers over untrusted networks. Provides a way to secure the data traffic of any given application using port forwarding, basically tunneling any TCP/IP port over SSH.
 
 ## Key Pair Generation
 

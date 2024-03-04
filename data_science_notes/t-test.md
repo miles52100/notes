@@ -7,7 +7,7 @@ $$
 \frac{\sqrt{n}(\overline{X}-\mu)}{\sigma}\sim N(0,1)
 $$
 
-To test the hypothesis that $\mu=\mu_0$ we simplt compute the value of the above statistic at $\mu=\mu_0$ and check if appropriately small to accept the hypothesis.
+To test the hypothesis that $\mu=\mu_0$ we simply compute the value of the above statistic at $\mu=\mu_0$ and check if appropriately small to accept the hypothesis.
 
 This is known (somewhat pointlessly) as the $z$-test
 

@@ -124,7 +124,7 @@ $$
 \hat{\beta} = (\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{Y}
 $$
 
-This solution *depends* on $\textbf{X}$ havgin full rank for invertibility.
+This solution *depends* on $\textbf{X}$ having full rank for invertibility.
 
 Results from earlier have their multi-dimensional counterparts which we recall briefly
 

@@ -11,10 +11,10 @@ More precisely Laplace, Lidstone or additive smoothing is a technique applied to
 Given a set of observations $x=(x_1,\ldots, x_d)$ from a $d$-dimensional multinomial distribution with $N$ trials, a smoothed version of the counts gives the estimator
 
   $$
-  \hat{\theta} = \frac{x_i+\alpha}{N+d\alpha}
+  \hat{\theta}_i = \frac{x_i+\alpha}{N+d\alpha}
   $$
 
-  The *smoothed* count is $N\theta_i$, and the pseudocount $\alpha>0$ is the smoothing parameter.
+  The *smoothed* count is $N\hat\theta_i$, and the pseudocount $\alpha>0$ is the smoothing parameter.
 
 Additive smoothing is a type of [shrinkage](./shrinkage.md#shrinkage) estimator.
 

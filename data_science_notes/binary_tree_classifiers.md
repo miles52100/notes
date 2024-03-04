@@ -14,7 +14,7 @@ If we continue until each leaf contains one pattern, we'd have a vastly overtrai
 
   2. (more common) grow the tree until all training patterns are correctly classified and then successively prune nodes which give the smallest increas in training classification error. Various measures describe the trade-off between accuracy and complexity of binary trees exist, and minimising the appropriate one of these should yield the classifier.
 
-All that remains to define various measures of accuracy, or *node impurity* at a node *m*. Three commonly used are:
+All that remains is to define various measures of accuracy, or *node impurity* at a node *m*. Three commonly used ones are:
 
   * Misclassification error: $\frac{1}{N_m}\sum_{i\in R_{m}} I(y_i\neq k(m))$
 
