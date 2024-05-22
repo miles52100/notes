@@ -2,6 +2,26 @@
 
 A somewhat random collection
 
+# Size prefixes
+
+| Prefix | Abbrv | Order of Mag |
+|:-----|--------:|----------:|
+|Giga |G| 10**9 |
+|Tera |T| 10**12|
+|Peta |P| 10**15|
+|Exa, |E| 10**18|
+|Zetta|Z| 10**21|
+|Yotta|Y| 10**24|
+
+
+# Basic Physics and Power
+Rough guide
+CPU uses 65-150 watts
+G|U|uses 30-1000 watts
+RAM uses 2-3.5 watts
+Hard drives use 5-10 watts (depends on type)
+
+
 
 ## ASIC
 Application-specific integrated circuit. A microchip designed for a special application.
@@ -82,3 +102,11 @@ and [here](https://www.pcworld.com/article/394939/cant-buy-a-gpu-3-alternative-u
 See [here](https://www.kernel.org/doc/html/next/x86/amd-memory-encryption.html)
 
 White paper [here](https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/white-papers/memory-encryption-white-paper.pdf)
+
+
+# Optical Computing
+
+Interesting [paper on ACCEL](https://www.nature.com/articles/s41586-023-06558-8#Sec9) experiment and claimed massive energy improvement over A100 as well as 10x speed up.
+
+Not sure I've understood how the adaptive learing aka back propagation works though?
+
