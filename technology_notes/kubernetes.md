@@ -61,3 +61,5 @@ Components are:
   [KubeFlow](./kubeflow.md)
 
   [Intro-geeksforgeeks](https://www.geeksforgeeks.org/introduction-to-kubernetes-k8s/)
+
+  [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) The main K8s conference
