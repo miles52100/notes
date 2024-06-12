@@ -1,7 +1,6 @@
 # Python Packages 
 A short note on some python packages and what they do.
 
-
 ## Misc.
 
   * pyenv - simply version management tool, see [here](https://github.com/pyenv/pyenv#installation)
@@ -113,3 +112,13 @@ See [guide](https://www.freecodecamp.org/news/how-to-build-and-publish-python-pa
 ## ML packages
 
   * DeepSpeed: open source DL optimization library for PyTorch
+
+
+## Own packages
+Doing imports of local packages is confusing
+
+[This article](https://fortierq.github.io/python-import/)
+
+nicely explains some of the confusion.
+Bottom line is recommendation to use the '-m' option
+when running a script.
