@@ -27,7 +27,7 @@ A short note on some python packages and what they do.
   * __future__ - module that serves 3 purposes. Avoid confusing import tools that expect to find modules they're importing, ensure 'future statements' run under releases < 2.1 at least yield runtime exceptions, and document when incompatible changes were introduced.
 
   For an explanation of how to use __future__ see [here](https://stackoverflow.com/questions/7075082/what-is-future-in-python-used-for-and-how-when-to-use-it-and-how-it-works).
-  Basically I think it's about breaking changes that will become standard in future releases but are available using your current version so that you can become use to them.
+  Basically I think it's about 'breaking changes' that will become standard in future releases but are available using your current version so that you can become use to them.
   E.g. print in versions < 3.x  was a keyword, before becoming a function in >= 3.x
   If you were using version 2.x you could do something like:
 
