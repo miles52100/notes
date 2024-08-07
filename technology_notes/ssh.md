@@ -1,52 +1,50 @@
 # SSH Notes
 
 ## SSH
+
 A standard for secure remote logins and file transfers over untrusted networks. Provides a way to secure the data traffic of any given application using port forwarding, basically tunneling any TCP/IP port over SSH.
 
 ## Key Pair Generation
 
-```
->> ssh-keygen -t ecdsa -b 521 -f <filename_private_key> -C "Comment to identify key"
-```
+    >> ssh-keygen -t ecdsa -b 521 -f <filename_private_key> -C "Comment to identify key"
 
 ### Remarks
 
-  * This creates a private/public key pair for authentication. 
+* This creates a private/public key pair for authentication. 
 
-  * The filename is the argument to `-f` and is the private key filename, the public key filename has the `.pub`
-ending added.
+* The filename is the argument to `-f` and is the private key filename, the public key filename has the `.pub` ending added.
 
-  * The comment argument is appended to the public key
+* The comment argument is appended to the public key
 
-  * It's a good idea to move the key pair to '~/.ssh'
+* It's a good idea to move the key pair to '~/.ssh'
 
-  * If you chose a non-default filename (giving the `-f` argument) you need to add it to the ssh-agent:
+* If you chose a non-default filename (giving the `-f` argument) you need to add it to the ssh-agent:
 
-  ### SSH agent
-  See some of the references for useful information on the agent.
+### SSH agent
 
-  You need to start an SSH agent and then add private keys to the agent.
-  If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you're password nor you doing anything.
+See some of the references for useful information on the agent.
 
-  Agent sockets are usually stored in 
+You need to start an SSH agent and then add private keys to the agent.
+If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you're password nor you doing anything.
+
+Agent sockets are usually stored in 
   
   `ls -l /tmp/ssh-*`
   
 Normally an agent is started in one of the initial dot files, so that sub-shells, terminals etc all have access to the agent.
 One of the environment variables set when the agent is started is `SSH_AUTH_SOCK`, which will typically point to one of the agent sockets above.
 
-
 To add a private key to an already running agent:
 
-  ```
-  ssh-add <filename_private_key
-  ```
+    ssh-add <filename_private_key
 
 To see what keys have been added to the ssh-agent run
 `ssh-add -l`
 
 ---
-## Reading keys 
+
+## Reading keys
+
 The default format for written keys is `OpenSSH-specific` (for open-ssh versions >= 6.5, `ssh -V` tells you what version you have)
 
 The public key is base64-encoded and so readable as a string.
@@ -65,9 +63,8 @@ Shows the type of key at end as well as printing out fingerprint.
 
 For OpenSSH-specific format you can just read it as its base-64 encoded
 
+## key fingerprint
 
-
-### key fingerprint
 A fingerprint of the public key.
 
 Typically on key generation this will take the form of
@@ -75,27 +72,25 @@ Typically on key generation this will take the form of
     [type:] [hexadecimal encoding of fingerprint] [comment]
     SHA256:k577E0vW1wfUBNIq7gEKCNiTtb5HqjG9hxsMeqe3zYQ my edward curve key
 
-
 To obtain the fingerprint:
 
 `ssh-keygen -l -f <path-to-key>.pub`
 
+## Key randomart
 
-### Key randomart
-
-See this [paper](http://users.ece.cmu.edu/~adrian/projects/validation/validation.pdf) 
-
+See this [paper](http://users.ece.cmu.edu/~adrian/projects/validation/validation.pdf)
 
 The purpose is to provide a visual alternative to validating keys rather than comparing the fingerprint strings -  the idea being any change is much esaier to spot in the randomart.
 
-To obtain the randomart 
+To obtain the randomart
 
 `ssh-keygen -lv -f <path-to-key>.pub`
 
 ---
 
 ## Dot SSH directory
-  Typically found in `${HOME}/.ssh`, this directory is not created by default, but typically when you first run `ssh <somehost>`
+
+Typically found in `${HOME}/.ssh`, this directory is not created by default, but typically when you first run `ssh <somehost>`
 
 Typically `.ssh` will contain the following:
 
@@ -110,6 +105,7 @@ Typically `.ssh` will contain the following:
 5. *config* a per-user configuration file - see below - again with read/write permissions for this user only.
 
 ### authorized_keys
+
 Contains a list of public keys that are authorized to log in to the server. Used to prevent unauthorized users from connecting to the SSH server.
 Typically you'll want to store your public key in this file on the remote machine you're trying to configure for ssh conection.
 
@@ -121,9 +117,8 @@ The format of each entry is
 
 The file permissions should be set to `600`, i.e., user read and write only.
 
-
-
 ### known_hosts
+
 A list of public keys for all hosts the ssh client has logged into.
 **check read/write** permissions
 A Typical entry:
@@ -131,8 +126,6 @@ A Typical entry:
     bitbucket.tdx.gss.gov.uk ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCidjBAlZS7Bt8LWaKUGuMjR/
     ...
     TOgTDZeJZdcDZBPh1i188/Vcr    
-
-
 
 ### Strucutre of the '.ssh/config' file
 
@@ -149,12 +142,11 @@ Host hostname2
 Host *
     SSH_OPTION value
 ```
+
  It's organised into stanzas (sections). The Host directive can contain a pattern or white-space list of patterns
 
  e.g. `10.10.0.[0-9]` matches the IP range, `!10.10.0.5` means not this host.
- 
  The SSH client reads the configuration file stanza by stanza and the **first** matching stanza has precedence. So more host-specific declarations should be at the beginning of the file.
-
 
 An example file might be, suppose as is typical, that you want to connect to a remote server, you need the username, hostname and port so you might use
 `ssh john@dev.example.com -p 2322` for example
@@ -196,12 +188,11 @@ Host *
     Compression yes
 ```
 
-When you type ssh targaryen, the ssh client reads the file and apply the options from the first match, which is Host targaryen. 
+When you type ssh targaryen, the ssh client reads the file and apply the options from the first match, which is Host targaryen.
 
-Then it checks the next stanzas one by one for a matching pattern. The next matching one is Host * !martell (meaning all hosts except martell), and it will apply the connection option from this stanza. 
+Then it checks the next stanzas one by one for a matching pattern. The next matching one is Host * !martell (meaning all hosts except martell), and it will apply the connection option from this stanza.
 
 The last definition Host * also matches, but the ssh client will take only the Compression option because the User option is already defined in the Host targaryen stanza.
-
 
 The ssh client read its configuration in the following precedence order:
 
@@ -215,44 +206,48 @@ Taking the example config above, if we want use all the options for Host dev, bu
 
 The `-F <alternative-config-file>` option cna be used for per-user config files
 
-
 For full information on `ssh config`, read the man page via `man 5 ssh_config`
+
 ---
 ---
+
 ## SSH Client and Server
 
- * SSH server - a program using the **Secure Shell Protocol** to accept connections from remote computers
+* SSH server - a program using the **Secure Shell Protocol** to accept connections from remote computers
 
- * SSH client - a program that allows the establishment of secure and authenticated SSH connections to SSH servers.
+* SSH client - a program that allows the establishment of secure and authenticated SSH connections to SSH servers.
 
  There are many SSH client programs available: 'WinSCP', 'OpenSSH', 'PuTTY', 'iTerm 2' etc.
 
+## SSH Tunnels and Port Forwarding
 
- ## SSH Tunnels and Port Forwarding
- A method of transporting arbitray networking data over an encerypted SSH connection.
+A method of transporting arbitray networking data over an encerypted SSH connection.
  Can be used to add encryption to legacy applications, implement VPNs and access intranet services across firewalls
 
- ### Local Port Forwarding
- Access (remote) local network resources that aren't exposed to the internet.
- For example, say you want to access a database server attached to your office from your home.
- For security purposes the db is only configured to accept connections from the local office network.
+### Local Port Forwarding
 
- To do this, suppose you have established an SSH connection with the SSH server on the remote machine. You need to your SSH client to forward traffic rom a specific port, say 1234, to the address of the db's server and its port on the office network.
+Access (remote) local network resources that aren't exposed to the internet.
+For example, say you want to access a database server attached to your office from your home.
+For security purposes the db is only configured to accept connections from the local office network.
 
- To do this you need the `-L` option to `ssh`
+To do this, suppose you have established an SSH connection with the SSH server on the remote machine. You need to your SSH client to forward traffic rom a specific port, say 1234, to the address of the db's server and its port on the office network.
+
+To do this you need the `-L` option to `ssh`
 
  ```
  ssh -L local_port:remote_address:remote_port <username@server.com>
  ```
 
- If the server application you want is running on the same system as the SSH server itself you'll need something like
+If the server application you want is running on the same system as the SSH server itself you'll need something like
 
  ```
  ssh -L 8888:localhost:1234 bob@ssh.youroffice.com
  ```
- When the tunneled data arrives at the SSH server , that server will sent to port '1234' on 'localhost' (meaning the same host as the SSH server - i.e. the remote machine)
+
+When the tunneled data arrives at the SSH server , that server will sent to port '1234' on 'localhost' (meaning the same host as the SSH server - i.e. the remote machine)
 
 ### Remote Port Forwarding
+
 The opposite of local port forwarding - less frequently used.
 Makes a resource on your local machine available to the remote machine.
 For example, you might be running a web server on the local PC you're sitting in front of, but your local machine is behind a firewall that doesn't allow incoming traffic to the server software.
@@ -268,6 +263,7 @@ ssh -R 8888:localhost:1234 bob@ssh.youroffice.com
 ```
 
 ### Dynamic port forwarding
+
 This works similarly to a proxy or VPN.
 The SSH client will create a 'SOCKS proxy' you can condifure applications to use.
 All the traffic sent through the proxy would be sent through the SSH server. 
@@ -297,5 +293,5 @@ You'd then configure a web browser or another application to use your local IP a
 
 ## References
 
-  * [OpenSSH](https://www.openssh.com/)
-  * [agent-forwarding](https://web.archive.org/web/20210427181202/http://unixwiz.net/techtips/ssh-agent-forwarding.html)
+* [OpenSSH](https://www.openssh.com/)
+* [agent-forwarding](https://web.archive.org/web/20210427181202/http://unixwiz.net/techtips/ssh-agent-forwarding.html)

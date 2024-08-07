@@ -2,10 +2,9 @@
 
 These are workflow practices aimed at:
 
-  * streamlining processes
-  * deployment
-  * development cycles etc
-
+* streamlining processes
+* deployment
+* development cycles etc
 
 As the MLOps reference says
 
@@ -18,13 +17,10 @@ As the MLOps reference says
 
     apllied to developing ML models
 
-### MLOps CI/CD
+## MLOps CI/CD
 
 In contrast to DevOps, CD is not about a single software package or 
 service but is about a system, an ML training pipeline, that should automatically deploy another service.
-
-
-
 
 ## References
 

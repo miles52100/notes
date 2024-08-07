@@ -23,7 +23,6 @@ protocol
 
 For these data loading order entirely controlled  user-defined iterable. Allows easire implementation of chunk-reading and dynamic batch size (e.g., yielding a batched sample at each time)
 
-
 ## DataLoader, DL
 
 Should combine `dataseet` and `sampler`. Should provide an iterable over given `dataset`.

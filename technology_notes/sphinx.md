@@ -6,56 +6,42 @@ Although mainly a documenting tool (for code?), it can be used to
 generate blogs, homepages, and even books.
 
 ### ReST
+
 There are:
 
- *directives*
-A ReST markup element that allows for marking a block of content with special meaning
+ *directives* A ReST markup element that allows for marking a block of content with special meaning,e.g.,
 
-e.g.
+      .. directivename:: argument ...
+         :option: value
 
-```
-.. directivename:: argument ...
-   :option: value
-
-   Content of the directive
-```
+         Content of the directive
 
 
 To insert an image. The file path to the image is either relative or absolute from the top sourcedir.
 E.g., if we have a directory `sourcedir/Images` containing a **PNG** file `logo.png` then we would insert that here (we're showing some options, e.g. we want it one-qarter the size of the *PNG*)
 
-```
-.. image:: /Images/logo.png
-   :class: with-shadow
-   :scale: 25 %
-   :align: right
-```
-
+      .. image:: /Images/logo.png
+         :class: with-shadow
+         :scale: 25 %
+         :align: right
 
 *domain*
 A collection of markup to describe and link to objects belonging together, e.g., elements of a programming language. The default domain is 'py:' for Python
-
 
 *role*
 A ReST markup element that allows marking a piece of text. Like directives, roles are extensible.
 Basic syntax is:
 
-```
-:rolename: `content`
-```
+      :rolename: `content`
 
 For example
 
-```
-1  :php:`$result = $a + 23;`
-2  :typoscript:`lib.hello.value = Hello World!`
-3  :file:`/etc/passwd`
-4  :kbd:`ctrl` +  :kbd:`s`
-```
+      1  :php:`$result = $a + 23;`
+      2  :typoscript:`lib.hello.value = Hello World!`
+      3  :file:`/etc/passwd`
+      4  :kbd:`ctrl` +  :kbd:`s`
 
-*Literal blocks*
-Introduced be ending a paragraph with the special marker `::`
-The literal block must be indented e.g.
+*Literal blocks* Introduced be ending a paragraph with the special marker `::` The literal block must be indented e.g.
 
 ```
 This is a normal text paragraph. The next is a code sample::
