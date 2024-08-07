@@ -1,17 +1,17 @@
 # Hyperparameter optimisation tools
 
 Some tools are:
-  * GridSearchCV - in sklearn
-  * RandomSearchCV - in sklearn
+
+* GridSearchCV - in sklearn
+* RandomSearchCV - in sklearn
 
 Platform agnostic tools are:
-  * Optuna - python package for hp optimization
 
+* Optuna - python package for hp optimization
 
 ## References
 
 [Good intro guide](https://neptune.ai/blog/best-tools-for-model-tuning-and-hyperparameter-optimization)
-
 
 [Difference between Ray and MLflow](https://www.restack.io/docs/mlflow-knowledge-mlflow-vs-ray-comparison#:~:text=MLflow%20is%20an%20open-source%20platform%20designed%20to%20manage,which%20can%20be%20used%20to%20scale%20ML%20applications.)
 

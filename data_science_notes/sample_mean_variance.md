@@ -20,14 +20,13 @@ $$
 S_{n}^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2
 $$
 
-
-We then have the basic 
+We then have the basic
 
 *Theorem*
 
 Let $X_1,\ldots,X_n$ be IID and let
 $\mu=\mathbb{E}(X_i)$, $\sigma^2=\mathbb{V}(X_i)$.
-Then 
+Then
 $$
 \mathbb{E}(\overline{X}_n)=\mu,
 $$
@@ -38,4 +37,3 @@ and
 $$
 \mathbb{E}(S_{n}^{2})=\sigma^2
 $$
-

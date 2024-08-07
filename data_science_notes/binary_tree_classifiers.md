@@ -16,11 +16,11 @@ If we continue until each leaf contains one pattern, we'd have a vastly overtrai
 
 All that remains is to define various measures of accuracy, or *node impurity* at a node *m*. Three commonly used ones are:
 
-  * Misclassification error: $\frac{1}{N_m}\sum_{i\in R_{m}} I(y_i\neq k(m))$
+* Misclassification error: $\frac{1}{N_m}\sum_{i\in R_{m}} I(y_i\neq k(m))$
 
-  * Gini index: $\sum_{k=1}^{K}\hat{p}_{mk}(1-\hat{p}_{mk})$
+* Gini index: $\sum_{k=1}^{K}\hat{p}_{mk}(1-\hat{p}_{mk})$
 
-  * Cross-Entropy: $\sum_{k=1}^{K}\hat{p}_{mk}\log(\hat{p}_{mk})$
+* Cross-Entropy: $\sum_{k=1}^{K}\hat{p}_{mk}\log(\hat{p}_{mk})$
 
 where $\hat{p}_{mk}$ is the proportion of patterns at node $m$ which are of type $k$. Because of their greater sensitivity to changes in node probabilities, the Gini index or cross-entropy tend to be used when growing the tree; the misclassification rate is typically used during pruning.
 

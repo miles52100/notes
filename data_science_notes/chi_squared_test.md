@@ -99,9 +99,8 @@ K=\sum_{i=1}^{n}\frac{(X_i-N/n)^2}{N/n}
 $$
 and $K\sim\chi^{2}_{(n-1)}$ under $H_0$.
 
-*Remarks*
+## *Remarks*
 
-  1. It's not necessary to use the intervals above, you could use any set as long as you replace the expected counts above with ones appropriate to the intervals used.
+1. It's not necessary to use the intervals above, you could use any set as long as you replace the expected counts above with ones appropriate to the intervals used.
 
-  2. Recall the distribution $K$ is only asymptotically $\chi^2$ so the expected count in each interval should be reasonably large, as a rule of thumb each $x_i\geq 5$
-
+2. Recall the distribution $K$ is only asymptotically $\chi^2$ so the expected count in each interval should be reasonably large, as a rule of thumb each $x_i\geq 5$

@@ -5,7 +5,6 @@ To quote from the intro reference, A *coreset* or *core-set* **of an input set**
     solving a problem on the coreset as its input, provably yields the same result as solving the same problem
     on the original full set, for a given family of problems (models, classifiers, loss functions)
 
-
 ## References
 
 [Intro-to-coresets](https://arxiv.org/pdf/1910.08707.pdf)

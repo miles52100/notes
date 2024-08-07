@@ -1,9 +1,7 @@
 # Boltzmann machine
 
+## References
 
-
-
-References
 ----------
 
 [medium article](https://medium.com/ibm-data-ai/an-introduction-to-boltzmann-machines-with-memory-dynamic-boltzmann-machines-ffa1be82d7c2)
@@ -11,7 +9,6 @@ References
 [Tutorial on Energy-Based Learning](http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf)
 
 [Learning and Evaluating BMs](https://www.cs.toronto.edu/~rsalakhu/papers/bm.pdf)
-
 
 This paper is very interesting and serves as a useful starting point for responding to those that claim to have thought up p-adic approaches ab initio.
 

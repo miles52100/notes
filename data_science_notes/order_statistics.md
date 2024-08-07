@@ -1,6 +1,5 @@
 # Order Statistics
 
-
 We have $n$ datapoints $\{x_1,\ldots,x_n\}$ drawn independently from a known continuous distribution with probability density function $f$ and cdf $F$.
 
 Relabelling and ordering by value we have 
@@ -11,13 +10,13 @@ To get the pdf and cdf of $X_{(1)}$ and $X_{(n)}$ is not hard.
 $$
 \mathbb{P}(X_{(1)} > x) = \mathbb{P}(\textrm{all} X_{i} > x) = (1-F(x))^n
 $$
-So 
-$$F_{X_{(1)}}(x) = 1 - (1-F(x))^n$$ 
+So
+$$F_{X_{(1)}}(x) = 1 - (1-F(x))^n$$
 and 
 $$f_{X_{(1)}}(x) = nf(x)(1-F(x))^{n-1}$$
 
-Similarly 
-$$F_{X_{(n)}}(x) = F(x)^n$$ 
+Similarly
+$$F_{X_{(n)}}(x) = F(x)^n$$
 and
 $$f_{X_{(n)}}(x) = nf(x)F(x)^{n-1}$$
 
@@ -34,6 +33,7 @@ f_{X_{i}}(x) = \frac{n!}{(i-1)!(n-i)!}F(x)^{i-1}(1-F(x)))^{n-i}f(x)
 $$
 
 ## Speical case
+
 An important special case is when $X\sim U(0,1)$, i.e., the original data points are drawn from the uniform distribution.
 
 Plugging in values for $F$ and $f$, then shows 

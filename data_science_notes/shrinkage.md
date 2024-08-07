@@ -1,3 +1,3 @@
 # Shrinkage
-Reduction of the effects of sample variation.
 
+Reduction of the effects of sample variation.

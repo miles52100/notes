@@ -30,7 +30,6 @@ Ditto for Y. We say one beats the other if they have a better score $= q/p$
 | 1+2  | X       | (6,3)  | 50% | yes   |
 |      | Y       | (5,2)  | 40% | no    |
 
-
 ## Causation and counterfactuals
 
 In the AoS book, chapter 16, on Causal Inference, there's a discussion of Simpson's paradox.
@@ -45,7 +44,6 @@ They give the example of a binary treatment variable $X$ and binary outxome $Y$.
 So it's a clinical set-up with a treatment that may or may not be given and a clear outcome. 
 They suppose the joint probability distribution of $(X,Y,Z)$ is given by
 
-
 |    | Y=1 | Y=0  | Y=1 | Y=0 |
 |----|-----|------|-----|-----|
 |X=1 |.15  |.225  |.1   |.025 |
@@ -56,11 +54,11 @@ The values sum to 1.
 
 The marginal distribution for $(X,Y)$ is
 
-|    | Y=1 | Y=0  |     | 
+|    | Y=1 | Y=0  |     |
 |----|-----|------|-----|
 |X=1 |.25  |.25   |.5   |
 |X=0 |.3   |.20   |.5   |
-|    |.55  |.45   |1.0    |
+|    |.55  |.45   |1.0  |
 
 From these tables we conclude:
 

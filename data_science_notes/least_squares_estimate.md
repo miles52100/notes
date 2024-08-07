@@ -17,7 +17,8 @@ $$
 \hat{\beta} = \frac{\sum (x_i-\overline{x})(y_i-\overline{y})}{\sum (x_i-\overline{x})^2}
 $$
 
-### The simple linear regression model
+## The simple linear regression model
+
 Even better is to model it as 
 $y_i=\alpha + \beta x_i + \epsilon_i$
 with the errors $\epsilon_i$ taken as IIRV, with mean 0 and variance $\sigma^2$. Under *this assumption* the likelihood of the data is computed to be
@@ -30,7 +31,8 @@ Clearly maximising this expression is equivalent to minimising the squared term 
 
 To repeat, **assuming the errors are normally distributed** the MLE is equiavlent to the ordinary least squares estimator, OLS.
 
-### Properties of OLS
+## Properties of OLS
+
 The normality assumption of the errors $\epsilon_i$ allows more than to just calculate the estimates $\hat{\alpha}$ and $\hat{\beta}$. In fact we have
 
 *Theorem*
@@ -95,8 +97,6 @@ Under appropriate conditions these estimators converge in probability to the tru
 Once you have the above estimates from the data, you can make predictions with the simple linear model. The variance of the estimators might lead you to assume the variance, and hence standard error, of your predictor to follow from the variance of a sum of two RVs.
 This is **wrong** and getting a prediction confidence interval is a bit more involved.
 
-
-
 ## Extension to Multiple Parameters
 
 The above model is linear, not because it's linear in $x_i$, *but linear in $\alpha$ and $\beta$*.
@@ -128,11 +128,12 @@ This solution *depends* on $\textbf{X}$ having full rank for invertibility.
 
 Results from earlier have their multi-dimensional counterparts which we recall briefly
 
-  1. $E[\hat{\beta}]=\beta$
+1. $E[\hat{\beta}]=\beta$
 
-  2. The variance-covariance matrix of $\hat{\beta}$ is $\sum_{\hat{\beta}\hat{\beta}}=\sigma^2(\textbf{X}^T\textbf{X})^{-1}$
+2. The variance-covariance matrix of $\hat{\beta}$ is $\sum_{\hat{\beta}\hat{\beta}}=\sigma^2(\textbf{X}^T\textbf{X})^{-1}$
 
-  3. An unbiased estimate for the variance of the error term is 
+3. An unbiased estimate for the variance of the error term is 
+
 $$
 s^2=\frac{||\textbf{Y}-\textbf{X}\hat{\beta}||^2}{n-p}=\frac{\textrm{RSS}}{n-p}
 $$

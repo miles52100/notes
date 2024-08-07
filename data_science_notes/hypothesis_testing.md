@@ -2,7 +2,6 @@
 
 This is concerned with making decisions about a parameter $\Theta$ based on observation of data $\textbf{y}$.
 
-
 The ususal set-up is a *null hypothesis*, $H_0$ and an *alternative hypothesis*, $H_1$.
 
 Usually this is framed as 
@@ -28,8 +27,8 @@ This is an **important special case** which illuminates the approach and this is
 
 Whatever the hypotheses it's important to state that they should be framed in a way the reflects the belief that
 
- * $H_0$ and $H_1$ are *mutually exclusive*, only one hypothesis can actually hold.
- * $H_0$ and $H_1$ are *exhaustive*, they cover all possibilites.
+* $H_0$ and $H_1$ are *mutually exclusive*, only one hypothesis can actually hold.
+* $H_0$ and $H_1$ are *exhaustive*, they cover all possibilites.
 
  For hypthesis testing we need a *test statistic*, a.k.a *score*, $T$ say.
 
@@ -54,7 +53,7 @@ So a test is defined by two quantities $\{T,A\}$.
 So far we have just setup a generic framework for hypothesis testing.
 There are two general approaches that differ, known as *Classical* and *Bayesian*
 
-# Classical Hypothesis Testing
+## Classical Hypothesis Testing
 
 Recall the definitions:
 
@@ -72,7 +71,7 @@ The *power* of the test is $1-\beta$.
 Ideally we'd want to minimize $\alpha$ and maximise the power. But clearly we can't do both independently.
 Typically *we fix* the significance level, traditionally $\alpha\sim 0.05$ and then find a test that maximizes the power.
 
-For simple hypothesis,we can construct the most powerful test given a significance level. This is 
+For simple hypothesis,we can construct the most powerful test given a significance level, namely:
 
 *The Neymann-Pearson Lemma*
 
@@ -122,7 +121,6 @@ $$\overline{Y}<\mu_0 - 1.645\frac{\sigma}{\sqrt{n}}$$
 
 We now face the prospect that the probabilities of Type I and II errors are now functions of the parameter $\theta$
 
-
 $$
 \mathbb{P}(\textrm{Type I error}) = \mathbb{P}(T\not\in A\mid \Theta=\Theta_0)=\alpha(\theta),\;\;\theta\in\Theta_0
 $$
@@ -147,7 +145,6 @@ $$
 \textrm{pow}^{\star}(\theta)\geq \textrm{pow}(\theta)
 $$
 *for all $\theta\in\Theta_1$ and for all power functions $\textrm{pow}$*
-
 
 If a UMP test exists we can easily find it using the Neymann-Pearson lemma to give the best test statistic for $H_0:\theta=\theta^{\prime}$ against $H_1:\theta=\theta_1$ for any $\theta_1\in\Theta_1$: if the resulting MP test **does not** depend on particular $\theta_1$ then **it is the UMP test**.
 
@@ -249,7 +246,7 @@ $$
 $$
 *where* $H_0$ *and* $H_1$ *specify hypotheses for r independent parameters. This result is used to derive the distribution of the well known* $\chi^2$ *statistic, see link*
 
-# Bayesian Hypothesis Testing
+## Bayesian Hypothesis Testing
 
 Bayesian hypothesis testing is perhaps simpler than its classical counterpart because we can now directly compute the posterior probabilities of the null and alternative, i.e.,
 
@@ -331,4 +328,3 @@ As $M\rightarrow\infty$, $BF\rightarrow\infty$ regardless of the value of $\over
 
 The reason this happens is as $M\rightarrow\infty$ or $n\rightarrow\infty$ the prior is assigning probability to values of $\pi$ whose likelihood is tending to 0. 
 This doesn't matter in computing the posterior $f(\pi\mid\bf{y})$ but **does** affect the computation of the BF, because of the averaging of the likelihood over all the values of $\pi$ under $H_1$ in the denominator.
-
