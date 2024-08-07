@@ -24,28 +24,26 @@ For context it's worth mentioning other HPE products
 
 See HPE link above for other products and services.
 
-
-### Finding Documentation
+## Finding Documentation
 
 The HPE website is very hard to navigate to find what you want
 
 Here's some links to what I think are the main documentation bits of relevance:
 
-* HPE Ezmeral Container Pltform 5.4 Documentation - [here](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&docLocale=en_US&page=reference/HPE_Ezmeral_Container_Platform.html) This is the landing page for docs. More sepcific useful links from there are:
+* HPE Ezmeral Container Platform 5.4 Documentation - [here](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&docLocale=en_US&page=reference/HPE_Ezmeral_Container_Platform.html). This is the landing page for docs. More sepcific useful links from there are:
 
   * [Universal concepts](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&page=reference/universal-concepts/Universal_Concepts_Overview.html)
   * [Navigating the GUI](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&page=reference/navigating-the-interface/Screen_Layout.html)
 
-
   * [DataTaps](https://support.hpe.com/hpesc/public/docDisplay?docId=a00116774en_us&page=reference/kubernetes/using-kubernetes/general-functionality/datataps/The_DataTaps_Screen.html)
   
-    Note the types of DataTap a Tenant Admin can make available:
+   Note the types of DataTap a Tenant Admin can make available:
     
-    HDFS - Hadoop Distributed File System
+     * HDFS - Hadoop Distributed File System
     
-    MapR - was a business software in US, s/w provides access to variety of data sources, from a single compute cluster including big data workloads such as Apache Hadoop, Apache Spark, a distributed filesystem, a multi-model db management system and event stream processing. Used by AWS in their Elastic Map Reduce service.
+     * MapR - was a business software in US, s/w provides access to variety of data sources, from a single compute cluster including big data workloads such as Apache Hadoop, Apache Spark, a distributed filesystem, a multi-model db management system and event stream processing. Used by AWS in their Elastic Map Reduce service.
 
-    NFS - option not available for K8s tenants
+     * NFS - option not available for K8s tenants
 
     GCS - Google Cloud Storage
 

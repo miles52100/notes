@@ -17,6 +17,6 @@ To create a new kernel
   5. Restart Jupyter lab/notebook
 
 To delete an unwanted kernel
-  1. `jupyter kernelspec uninstall unwanted-kernel`
 
+  1. `jupyter kernelspec uninstall unwanted-kernel`
   

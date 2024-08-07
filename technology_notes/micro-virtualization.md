@@ -4,8 +4,6 @@ Micro-virtualization is a technology developed by desktop security firm Bromium 
 
 MicroVMs
 
-See 
-[Webopedia article](https://www.webopedia.com/definitions/micro-virtualization/)
+## References
 
-
-
+See [Webopedia article](https://www.webopedia.com/definitions/micro-virtualization/).
