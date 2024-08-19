@@ -56,6 +56,12 @@ Acts as network proxy and load balancer for a service on a single worker node an
 
 * Docker - Containerization platform
 
+## Related technology
+
+[Helm](https://helm.sh/) A package manager for k8s.
+
+[Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master) An open source configuration management tool for k8s.
+
 ## References
   
 [KubeFlow](./kubeflow.md)
