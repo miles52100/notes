@@ -159,6 +159,9 @@ A Typical entry:
     ...
     TOgTDZeJZdcDZBPh1i188/Vcr    
 
+SSH clients store these known host keys for hosts they have ever connected to.
+In OpenSSH the collection is stored in `/etc/ssh/known_hosts` and in `.ssh/known_hosts` in each user's home directory.
+
 #### Structure of the '.ssh/config' file
 
 Typical structure will look like
@@ -350,13 +353,40 @@ The `ssh_config` file specifies one or more host key files (mandatory) and the l
 
 Within these files you can set configuration options, such as allowing `X11Forwarding`, `PermitRootLogin`, etc.
 
+To set values in the server configuration file for OpenSSH. Read the man page `man 5 sshd_config`
+In particular try to avoid editing the `/etc/sshd/sshd_config` file directly.
+Instead, create your settings a separate file stored in `/etc/sshd/sshd_config.d/`
+It doesn't matter what you call the file as the first line in the system wide config file (the one you should avoid editing directly) is
+
+`Include /etc/ssh/sshd_config.d/*`
+
+For most settings the first key value pair seen is the one used, unless it's a multi-value key such as `HostKey`.
+
 ### SSH server logging
 
 Logging - SSH server uses the `syslog` subsystem for logging. Manyways to configure `syslog`. Many enterprises collect syslog data into their centralised SIEM (Security Incident and Event Management) system.
 Most systems, `syslog` is configured to log SSH-related messages be default into files under `/var/log/.`
 It's strongly advised to set the logging level, in the SSH server config file, to `VERBOSE`, so that fingerprints for SSH key access get properly logged.
 
+### SSH Host keys
 
+Each host (i.e., computer) should have a unique host key. Sharing host keys is strongly not recommended.
+
+In OpenSSH, host keys are usually stored in `/etc/ssh` directory, in files that start `ssh_host_<rsa/dsa/ecdsa/ed25519>_key`
+
+**They are normally generated automatically when OpenSSH is first installed.**
+
+If needed, use `ssh-keygen` to generate them or replace them.
+
+### Host Certificates
+
+Some SSH implementations support using certificates for authenticating hosts.
+`Tectia SSH` supports standards-compliant `X.509` certs for host authentication.
+This allows the host certs to be generated and managed using normal cert management tools in an enterprise.
+
+OpenSSH only supports its own proprietary certificate format. Using them requires developing and maintaining internal tools to host certs.
+
+The reference to server SSH says using host certs instead of host keys is 'generally strongly recommended'
 ## References
 
 * [OpenSSH](https://www.openssh.com/)
@@ -364,3 +394,4 @@ It's strongly advised to set the logging level, in the SSH server config file, t
 
 * [OpenSSH_vs_OpenSSL_key_formats](https://coolaj86.com/articles/openssh-vs-openssl-key-formats/)
 * [SSH_academy_server](https://www.ssh.com/academy/ssh/server)
+* [NIST IR 7966 - SSH key management](https://www.ssh.com/academy/compliance/nist-7966)
