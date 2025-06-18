@@ -1,6 +1,6 @@
 # Kubernetes
 
-Abbreviated `k8s` it's an open-source system for:
+Abbreviated `k8s` is an open-source system for:
 
 * automating deployment
 * scaling and management of containerized apps
@@ -64,8 +64,27 @@ Acts as network proxy and load balancer for a service on a single worker node an
 
 ## References
   
-[KubeFlow](./kubeflow.md)
+* [KubeFlow](./kubeflow.md)
 
-[Intro-geeksforgeeks](https://www.geeksforgeeks.org/introduction-to-kubernetes-k8s/)
+* [Intro-geeksforgeeks](https://www.geeksforgeeks.org/introduction-to-kubernetes-k8s/)
 
-[KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) The main K8s conference.
+* [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) The main K8s conference.
+
+* [top kubernetes projects](https://www.geeksforgeeks.org/top-kubernetes-project-ideas-for-beginners/#1-deploy-a-simple-web-application-on-kubernetes)
+
+* [Docker Swarm vs K8s](https://phoenixnap.com/blog/kubernetes-vs-docker-swarm)
+
+* [Process Automation vs Process Orchestration](https://www.processmaker.com/blog/process-orchestration-vs-process-automation/)
+
+---
+
+## kubectl commands
+
+`kubectl describe pvc <name-of-persistent-volume-resource>`
+
+For current case it was `<name>-dev-pvc`
+This shows certain things including existance of Finalisers that control deletion and what is using the PVC. 
+In particular attempting to do
+
+`kubectl delete -f pvc.yml` 
+just hangs. I'm guessing because of a combination of the above issues which need to be resolved first.
