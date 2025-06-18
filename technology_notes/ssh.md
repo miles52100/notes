@@ -10,7 +10,7 @@ A standard for secure remote logins and file transfers over untrusted networks. 
 
 ### Remarks
 
-* This creates a private/public key pair for authentication. 
+* This creates a private/public key pair for authentication.
 
 * The filename is the argument to `-f` and is the private key filename, the public key filename has the `.pub` ending added.
 
@@ -25,45 +25,68 @@ A standard for secure remote logins and file transfers over untrusted networks. 
 See some of the references for useful information on the agent.
 
 You need to start an SSH agent and then add private keys to the agent.
-If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you're password nor you doing anything.
+If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you having to re-enter the password, etc.
 
-Agent sockets are usually stored in 
+Agent sockets are usually stored in:
   
   `ls -l /tmp/ssh-*`
   
-Normally an agent is started in one of the initial dot files, so that sub-shells, terminals etc all have access to the agent.
-One of the environment variables set when the agent is started is `SSH_AUTH_SOCK`, which will typically point to one of the agent sockets above.
+Normally an agent is started in one of the initial user dot files, so that sub-shells, terminals, etc., all have access to the agent.
+One of the environment variables set when the agent is started is `SSH_AUTH_SOCK` which typically will be set to one of the agent sockets above.
 
 To add a private key to an already running agent:
 
-    ssh-add <filename_private_key
+    ssh-add <filename_private_key>
 
 To see what keys have been added to the ssh-agent run
+
 `ssh-add -l`
 
 ---
 
 ## Reading keys
 
-The default format for written keys is `OpenSSH-specific` (for open-ssh versions >= 6.5, `ssh -V` tells you what version you have)
+The default format for written keys is `OpenSSH-specific`.
+For open-ssh versions >= 6.5 `ssh -V` tells you what version you have.
+In the VScode terminal this returns
 
-The public key is base64-encoded and so readable as a string.
+> OpenSSH_9.9p2, LibreSSL 3.3.6
+
+Incidentally, the 'p' stands for patch (somtimes you might see 'pl' standing for patch level). "LibreSSL" is an open source implementation of TLS protocol.
+Apparently, the OpenBSD project forked LibreSSL from OpenSSL 1.0.1g in 2014.
+
+The public key is **base64-encoded** and so readable as a string, e.g.,
 `cat <pubkey>.pub` works.
-The private key is a binary file and so to read it you need to code.
+The private key is a **binary** file and you need a tool to obtain a human readable output.
 
-Typically you'll need an `openssl` command to do this, which means knowing the type of private key. For example if you know it's an RSA key then
+Typically you'll need an `openssl` command to do this, which means knowing the **type of private key**. For example if you know it's an RSA key then
 
     openssl rsa -text -noout -in <path-to-priv-key>
 
-To get that key type you'll need 
+To get that key type, run (works with pub or priv)
 
     ssh-keygen -lf <path-to-key>
-(works with pub or priv)
-Shows the type of key at end as well as printing out fingerprint.
+
+This shows the type of key at end as well as printing out the key's fingerprint.
 
 For OpenSSH-specific format you can just read it as its base-64 encoded
 
-## key fingerprint
+See the reference for information on the differences between OpenSSH and OpenSSL key formats.
+
+## Validating and comparing keys by value
+
+Two approaches, either compare the key fingerprints or compare their randomart visualisations.
+
+Two typical situations where you might want to compare keys:
+
+  1. You have two, differently named or same filename but located in different directories or systems, public or private keys and you want to check they're actually the same key
+  2. You have a public (private) key and you want to check it is paired with a given private (public) key
+
+In both cases, printing the fingerprint or randomart will work.
+
+**NOTE** the fingerprint and the randomart are associated to the key pair. So the fingerpint (randomart) of a public key is **the same** as that for the corresponding private key.
+
+### Key fingerprint
 
 A fingerprint of the public key.
 
@@ -72,11 +95,11 @@ Typically on key generation this will take the form of
     [type:] [hexadecimal encoding of fingerprint] [comment]
     SHA256:k577E0vW1wfUBNIq7gEKCNiTtb5HqjG9hxsMeqe3zYQ my edward curve key
 
-To obtain the fingerprint:
+To obtain the fingerprint run
 
 `ssh-keygen -l -f <path-to-key>.pub`
 
-## Key randomart
+### Key randomart
 
 See this [paper](http://users.ece.cmu.edu/~adrian/projects/validation/validation.pdf)
 
@@ -88,36 +111,45 @@ To obtain the randomart
 
 ---
 
-## Dot SSH directory
+## Typical User set-up
 
-Typically found in `${HOME}/.ssh`, this directory is not created by default, but typically when you first run `ssh <somehost>`
+### Dot SSH directory
+
+Typically found in `${HOME}/.ssh`, this directory is not created by default, but is created typically when you first run `ssh <somehost>`
 
 Typically `.ssh` will contain the following:
 
-1. *private key* file (default name could be 'id_rsa')
+1. *private key* file(s) (default name could be 'id_rsa')
 
-2. *public key* file, typically with a '.pub' ending corresponding to the associated private key
+2. *public key* file(s), typically with a '.pub' ending corresponding to the associated private key
 
-3. *authorized_keys* A list of the public keys that can be used for logging in as this user (not highly sensitive, but should have read/write for the owner only - not group or world)
+3. *authorized_keys*
+   A list of the public keys used to authenticate a user logging into the server.
+   The user will use their associated private key to authenticate themselves.
+   This list is not highly sensitive, but should have read/write for the owner only - not group or world.
 
-4. *known_hosts* A list of public keys for all hosts the ssh user has logged into. Again ideally should have read/write permissions for the owner only
+4. *known_hosts*
+   A list of public keys for all hosts the ssh user has logged into.
+   When you try to SSH into a server or service for the first time, then you'll be asked if you trust the server and if you accept then its public key will be added to the list in this file.
+   Again, ideally this file should have read/write permissions for the owner only.
 
-5. *config* a per-user configuration file - see below - again with read/write permissions for this user only.
+5. *config* a per-user configuration file, see details below.
+   This file should have read/write permissions for the user only.
 
-### authorized_keys
+#### authorized_keys
 
-Contains a list of public keys that are authorized to log in to the server. Used to prevent unauthorized users from connecting to the SSH server.
+Contains a list of public keys that users authenticating with the corresponding private key are authorized to log in to the server. Used to prevent unauthorized users from connecting to the SSH server.
 Typically you'll want to store your public key in this file on the remote machine you're trying to configure for ssh conection.
 
 The file can be edited manually, but it's recommended to use `ssh-copy-id` command to add a user's public key.
 It copies the public key to the remote server's authorized_keys file, preserving any existing keys and sets correct permissions on the file to enable it to be used for SSH key-based authentication.
 
-The format of each entry is 
+The format of each entry is
 `ssh-[type] [public key] [comment]`
 
 The file permissions should be set to `600`, i.e., user read and write only.
 
-### known_hosts
+#### known_hosts
 
 A list of public keys for all hosts the ssh client has logged into.
 **check read/write** permissions
@@ -127,7 +159,7 @@ A Typical entry:
     ...
     TOgTDZeJZdcDZBPh1i188/Vcr    
 
-### Strucutre of the '.ssh/config' file
+#### Structure of the '.ssh/config' file
 
 Typical structure will look like
 
@@ -143,15 +175,15 @@ Host *
     SSH_OPTION value
 ```
 
- It's organised into stanzas (sections). The Host directive can contain a pattern or white-space list of patterns
-
- e.g. `10.10.0.[0-9]` matches the IP range, `!10.10.0.5` means not this host.
+ It's organised into stanzas (sections). The Host directive can contain a pattern or white-space list of patterns,
+ e.g., `10.10.0.[0-9]` matches the obvious IP range, `!10.10.0.5` means not this host, etc.
  The SSH client reads the configuration file stanza by stanza and the **first** matching stanza has precedence. So more host-specific declarations should be at the beginning of the file.
 
-An example file might be, suppose as is typical, that you want to connect to a remote server, you need the username, hostname and port so you might use
-`ssh john@dev.example.com -p 2322` for example
+An example file might be as follows.
+Suppose you want to connect to a remote serverthen you need the username, hostname and port for the connection. For example,
+`ssh john@dev.example.com -p 2322`
 
-With a config file set up as
+If your config file looks like:
 
 ```
 Host dev
@@ -160,7 +192,9 @@ Host dev
   Port 2322
 ```
 
-You can then simply use `ssh dev`
+You can easily connect with the command
+
+`ssh dev`
 
 The following example illustrates a more realistic config file
 
@@ -178,7 +212,7 @@ Host martell
     HostName 192.168.10.50
 
 Host *ell
-    user oberyn
+    User oberyn
 
 Host * !martell
     LogLevel INFO
@@ -188,13 +222,15 @@ Host *
     Compression yes
 ```
 
-When you type ssh targaryen, the ssh client reads the file and apply the options from the first match, which is Host targaryen.
+With this config file running
+`ssh targaryen`
+will result in the ssh client reading the config file and applying the options from the first match which, in this example, is `Host targaryen`.
 
-Then it checks the next stanzas one by one for a matching pattern. The next matching one is Host * !martell (meaning all hosts except martell), and it will apply the connection option from this stanza.
+Then it checks the next stanza for a matching pattern. The next matching one is `Host * !martell`, meaning all hosts except `martell`, and it will apply the connection option from this stanza.
 
-The last definition Host * also matches, but the ssh client will take only the Compression option because the User option is already defined in the Host targaryen stanza.
+The last stanza matching pattern is `Host *`, but the ssh client will take only the Compression option because the User option has already been set from the first matching stanza, `targaryen`.
 
-The ssh client read its configuration in the following precedence order:
+The ssh client reads its configuration from the following files, ordered by precedence:
 
 1. Options specified on the command line
 
@@ -202,7 +238,7 @@ The ssh client read its configuration in the following precedence order:
 
 3. Options defined in `/etc/ssh/ssh_config`
 
-Taking the example config above, if we want use all the options for Host dev, but want to user to be root instead of john, use `ssh -o "User=root" dev`
+Taking the example config above, if we want to use all the options for Host dev, but want to user to be root instead of john, use `ssh -o "User=root" dev`
 
 The `-F <alternative-config-file>` option cna be used for per-user config files
 
@@ -266,7 +302,7 @@ ssh -R 8888:localhost:1234 bob@ssh.youroffice.com
 
 This works similarly to a proxy or VPN.
 The SSH client will create a 'SOCKS proxy' you can condifure applications to use.
-All the traffic sent through the proxy would be sent through the SSH server. 
+All the traffic sent through the proxy would be sent through the SSH server.
 Similar to local forwarding - it takes local traffic sent to a specific port on your PC and sends it over the SSH connection to a remote location.
 
 Suppose you're using a public WiFi network and you want to browse securely without being snooped on.
@@ -291,7 +327,40 @@ ssh -D 8888 bob@ssh.yourhome.com
 
 You'd then configure a web browser or another application to use your local IP address (127.0.0.1) and port 8888. All traffic from the application would be redirected through the tunnel.
 
+## SSH Server code and setup
+
+In order to connect to a server using SSH, the server needs to be running some sort of SSH server daemon code.
+
+For OpenSSH, this code program is `sshd` and is located typically in
+`/usr/sbin/sshd`
+
+A situation where you will need to install and set this up is when creating a docker container. The server code package will be `openssh-server` that you'll install with the relevant package manager, and you will have to install as **root**.
+
+The `sshd` process is started when the system boots and runs as root.
+
+Here we just want to record some aspects of this SSH server setup.
+For more information, see the SSH server academy link, as well as appropriate man pages.
+
+### SSH server configuration files
+
+The SSH server has a configuration file, typically located `/etc/sshd/sshd_config`, which specifies encryption/authentication options, file locations, logging, etc.
+
+In fact the SSH server reads several configuration files.
+The `ssh_config` file specifies one or more host key files (mandatory) and the location of the `authorized_keys` files for users, as well as potentially other files.
+
+Within these files you can set configuration options, such as allowing `X11Forwarding`, `PermitRootLogin`, etc.
+
+### SSH server logging
+
+Logging - SSH server uses the `syslog` subsystem for logging. Manyways to configure `syslog`. Many enterprises collect syslog data into their centralised SIEM (Security Incident and Event Management) system.
+Most systems, `syslog` is configured to log SSH-related messages be default into files under `/var/log/.`
+It's strongly advised to set the logging level, in the SSH server config file, to `VERBOSE`, so that fingerprints for SSH key access get properly logged.
+
+
 ## References
 
 * [OpenSSH](https://www.openssh.com/)
 * [agent-forwarding](https://web.archive.org/web/20210427181202/http://unixwiz.net/techtips/ssh-agent-forwarding.html)
+
+* [OpenSSH_vs_OpenSSL_key_formats](https://coolaj86.com/articles/openssh-vs-openssl-key-formats/)
+* [SSH_academy_server](https://www.ssh.com/academy/ssh/server)
