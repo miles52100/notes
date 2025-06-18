@@ -107,3 +107,44 @@ White paper [here](https://www.amd.com/content/dam/amd/en/documents/epyc-busines
 Interesting [paper on ACCEL](https://www.nature.com/articles/s41586-023-06558-8#Sec9) experiment and claimed massive energy improvement over A100 as well as 10x speed up.
 
 Not sure I've understood how the adaptive learing aka back propagation works though?
+
+
+## RISC-V
+
+Pronounced 'risk-five'.
+
+An open-source chip architecture.
+
+
+
+This link explains US policy makers concerns around RISC-V [here](https://cset.georgetown.edu/article/risc-v-what-it-is-and-why-it-matters/) from CSET, Center for Security and Emerging Technology.
+Key concern:
+
+  * Chinese firms use RISC-V arch to avoid U.S. export controls
+  * Allows China's chip design ecosystem to grow
+
+They're looking to regulate this, but that could be counter-productive.
+
+Document does explain what RISC-V is
+
+### Context
+At foundation of every processor's design is a technical specification known as an
+instruction set architecture - ISA.
+This describes how software will control the processor's hardware(? TODO look up this?)
+
+Specialized AI chips, such as those designed by AMD and NVIDIA, **rely on an in-house ISA**.
+For general computing, i.e. CPUs, rather than reinvent the wheel, chip design teams typically **licence an existing ISA** from Intel or Arm, e.g., for their respective CPU designs AMD licences from Intel and Apple from Arm. But increasingly, rather than licence, CPU design shops are considering a third ISA option: RISC-V
+
+RISC-V is an open-source ISA managed by a Swiss standards development body (RISC-V International). Chip design teams can access and implement the RISC-V standard free of charge, avoiding costly licensing fees.
+Companies (U.S. and Chinese) are taking advantage of RISC-V to design chips of varying complexity from simple microcontrollers to complex systems-on-a-chip.
+
+Export controls targeting standards-setting activity for RISC-V are likely the only regulatory tools that have a chance to slow down China's development and adoption of the tech.
+
+**Note**
+
+  * RISC-V International: moved HQ from U.S. to Switzerland in March 2020 in part to insulate from creeping influence of geopolitics on chip industry.
+
+#### References and papers
+
+  * [Potential of RISC-V platform in Financial Computing on Option Pricing and Energy Efficiency](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10394561)
+  * 
