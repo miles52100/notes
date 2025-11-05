@@ -13,4 +13,5 @@ misc_notes/*
 !misc_notes/*.md
 hacking_ai/*
 !hacking_ai/*.md
+!README.md
 
