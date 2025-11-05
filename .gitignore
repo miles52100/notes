@@ -3,8 +3,11 @@
 !.gitignore
 !/data_science_notes
 !/technology_notes
+!/misc_notes
 technology_notes/*
 !technology_notes/*.md
 data_science_notes/*
 !data_science_notes/*.md
+misc_notes/*
+!misc_notes/*.md
 
