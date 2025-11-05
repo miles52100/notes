@@ -4,10 +4,13 @@
 !/data_science_notes
 !/technology_notes
 !/misc_notes
+!/hacking_ai
 technology_notes/*
 !technology_notes/*.md
 data_science_notes/*
 !data_science_notes/*.md
 misc_notes/*
 !misc_notes/*.md
+hacking_ai/*
+!hacking_ai/*.md
 
