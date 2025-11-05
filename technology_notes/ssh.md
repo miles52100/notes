@@ -6,18 +6,16 @@ A standard for secure remote logins and file transfers over untrusted networks. 
 
 ## Key Pair Generation
 
+```text
     >> ssh-keygen -t ecdsa -b 521 -f <filename_private_key> -C "Comment to identify key"
+```
 
 ### Remarks
 
 * This creates a private/public key pair for authentication.
-
 * The filename is the argument to `-f` and is the private key filename, the public key filename has the `.pub` ending added.
-
 * The comment argument is appended to the public key
-
 * It's a good idea to move the key pair to '~/.ssh'
-
 * If you chose a non-default filename (giving the `-f` argument) you need to add it to the ssh-agent:
 
 ### SSH agent
@@ -28,19 +26,25 @@ You need to start an SSH agent and then add private keys to the agent.
 If the keys are password protected, you'll need to enter the password once only to release to the agent. After that the agent should be able to respond to all SSH challenges during connections without you having to re-enter the password, etc.
 
 Agent sockets are usually stored in:
-  
-  `ls -l /tmp/ssh-*`
-  
+
+```text
+> ls -l /tmp/ssh-*
+```
+
 Normally an agent is started in one of the initial user dot files, so that sub-shells, terminals, etc., all have access to the agent.
 One of the environment variables set when the agent is started is `SSH_AUTH_SOCK` which typically will be set to one of the agent sockets above.
 
 To add a private key to an already running agent:
 
-    ssh-add <filename_private_key>
+```text
+> ssh-add <filename_private_key>
+```
 
 To see what keys have been added to the ssh-agent run
 
-`ssh-add -l`
+```text
+> ssh-add -l
+```
 
 ---
 
@@ -50,7 +54,9 @@ The default format for written keys is `OpenSSH-specific`.
 For open-ssh versions >= 6.5 `ssh -V` tells you what version you have.
 In the VScode terminal this returns
 
+```text
 > OpenSSH_9.9p2, LibreSSL 3.3.6
+```
 
 Incidentally, the 'p' stands for patch (somtimes you might see 'pl' standing for patch level). "LibreSSL" is an open source implementation of TLS protocol.
 Apparently, the OpenBSD project forked LibreSSL from OpenSSL 1.0.1g in 2014.
@@ -61,11 +67,15 @@ The private key is a **binary** file and you need a tool to obtain a human reada
 
 Typically you'll need an `openssl` command to do this, which means knowing the **type of private key**. For example if you know it's an RSA key then
 
+```text
     openssl rsa -text -noout -in <path-to-priv-key>
+```
 
 To get that key type, run (works with pub or priv)
 
+```text
     ssh-keygen -lf <path-to-key>
+```
 
 This shows the type of key at end as well as printing out the key's fingerprint.
 
@@ -92,8 +102,10 @@ A fingerprint of the public key.
 
 Typically on key generation this will take the form of
 
+```text
     [type:] [hexadecimal encoding of fingerprint] [comment]
     SHA256:k577E0vW1wfUBNIq7gEKCNiTtb5HqjG9hxsMeqe3zYQ my edward curve key
+```
 
 To obtain the fingerprint run
 
@@ -120,19 +132,15 @@ Typically found in `${HOME}/.ssh`, this directory is not created by default, but
 Typically `.ssh` will contain the following:
 
 1. *private key* file(s) (default name could be 'id_rsa')
-
 2. *public key* file(s), typically with a '.pub' ending corresponding to the associated private key
-
 3. *authorized_keys*
    A list of the public keys used to authenticate a user logging into the server.
    The user will use their associated private key to authenticate themselves.
    This list is not highly sensitive, but should have read/write for the owner only - not group or world.
-
 4. *known_hosts*
    A list of public keys for all hosts the ssh user has logged into.
    When you try to SSH into a server or service for the first time, then you'll be asked if you trust the server and if you accept then its public key will be added to the list in this file.
    Again, ideally this file should have read/write permissions for the owner only.
-
 5. *config* a per-user configuration file, see details below.
    This file should have read/write permissions for the user only.
 
@@ -155,9 +163,12 @@ A list of public keys for all hosts the ssh client has logged into.
 **check read/write** permissions
 A Typical entry:
 
-    bitbucket.tdx.gss.gov.uk ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCidjBAlZS7Bt8LWaKUGuMjR/
+```text
+    bitbucket.tdx.gss.gov.uk ssh-rsa
+    AAAAB3NzaC1yc2EAAAADAQABAAABAQCidjBAlZS7Bt8LWaKUGuMjR/
     ...
     TOgTDZeJZdcDZBPh1i188/Vcr    
+```
 
 SSH clients store these known host keys for hosts they have ever connected to.
 In OpenSSH the collection is stored in `/etc/ssh/known_hosts` and in `.ssh/known_hosts` in each user's home directory.
@@ -166,7 +177,7 @@ In OpenSSH the collection is stored in `/etc/ssh/known_hosts` and in `.ssh/known
 
 Typical structure will look like
 
-```
+```text
 Host hostname1
     SSH_OPTION value
     SSH_OPTION value
@@ -188,7 +199,7 @@ Suppose you want to connect to a remote serverthen you need the username, hostna
 
 If your config file looks like:
 
-```
+```text
 Host dev
   HostName dev.example.com
   User john
@@ -201,7 +212,7 @@ You can easily connect with the command
 
 The following example illustrates a more realistic config file
 
-```
+```text
 Host targaryen
     HostName 192.168.1.10
     User daenerys
@@ -273,13 +284,13 @@ To do this, suppose you have established an SSH connection with the SSH server o
 
 To do this you need the `-L` option to `ssh`
 
- ```
+ ```text
  ssh -L local_port:remote_address:remote_port <username@server.com>
  ```
 
 If the server application you want is running on the same system as the SSH server itself you'll need something like
 
- ```
+ ```text
  ssh -L 8888:localhost:1234 bob@ssh.youroffice.com
  ```
 
@@ -291,13 +302,13 @@ The opposite of local port forwarding - less frequently used.
 Makes a resource on your local machine available to the remote machine.
 For example, you might be running a web server on the local PC you're sitting in front of, but your local machine is behind a firewall that doesn't allow incoming traffic to the server software.
 
-```
+```text
 ssh -R remote_port:local_address:local_port username@server.com
 ```
 
 So if you want your server app at port 1234 on your machine available at port 8888 on the remote SSH server machine then
 
-```
+```text
 ssh -R 8888:localhost:1234 bob@ssh.youroffice.com
 ```
 
@@ -318,13 +329,13 @@ E.g. if your media server is located at port 192:168:1.123 on your home netowkr,
 
 To use dynamic forwarding, use the `-D` flag
 
-```
+```text
 ssh -D local_port username@server.com
 ```
 
 For example suppose you have access to an SSH server at `ssh.yourhome.com` and your username on the SSH server is `bob`. You want to use dynamic forwarding to open a SOCKS proxy at port 8888 on the current PC. You'd run the command:
 
-```
+```text
 ssh -D 8888 bob@ssh.yourhome.com
 ```
 
@@ -387,6 +398,7 @@ This allows the host certs to be generated and managed using normal cert managem
 OpenSSH only supports its own proprietary certificate format. Using them requires developing and maintaining internal tools to host certs.
 
 The reference to server SSH says using host certs instead of host keys is 'generally strongly recommended'
+
 ## References
 
 * [OpenSSH](https://www.openssh.com/)
