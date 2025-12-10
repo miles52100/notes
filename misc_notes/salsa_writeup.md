@@ -47,7 +47,7 @@ The LWE problem is
 >
 > Find $\mathbf{s}\in\mathbb{Z}^{n}_{q}$
 
-There are various refinements and reductions. The above is often called the *search LWE*, in contrast to the *decision LWE*. The latter is simply to distinguish a sample $(a,b)\sim\mathcal{A}_{\mathbf{s},\chi}$, from one drawn from the Uniform distribution on $\mathbb{Z}^{m\times n}_{q}\times \mathbb{Z}^{m}_{q}$.
+There are various refinements and reductions. The above is often called the *search LWE*, in contrast to the *decision LWE*. The latter is simply to distinguish a sample $(a,b)\sim\mathcal{A}_{\mathbf{s},\chi}$, drawn from the $\mathcal{A}_{\mathbf{s},\chi}$ distribution, from a sample drawn from the Uniform distribution, say $(c,d)\sim\mathbb{Z}^{m\times n}_{q}\times \mathbb{Z}^{m}_{q}$.
 
 There's a reduction from the $search$ to the $decision$ version of LWE (provided $q$ is prime and $n=O(f(q))$, for some polynomial $f$)
 
@@ -89,6 +89,13 @@ pass
 - [Classical Reduction of SVP to LWE: A Concrete Seurity Analysis](https://iacr.steepath.eu/2020/880-ClassicalReductionofSVPtoLWEAConcreteSecurityAnalysis.pdf)
 
 - [benchmarking attacks on LWE](https://csrc.nist.gov/csrc/media/Projects/post-quantum-cryptography/documents/pqc-seminars/presentations/17-benchmarking-lwe-attack-08062024.pdf)
+
+- [cruel and cool attacks on LWE](https://eprint.iacr.org/2024/443.pdf)
+
+- [Crystal Kyber proposed key sizes](https://pq-crystals.org/kyber/data/kyber-specification-round3-20210131.pdf)
+
+- [On the concrete hardness of LWE](https://eprint.iacr.org/2015/046.pdf)
+
 
 blah blah
 blah blah
