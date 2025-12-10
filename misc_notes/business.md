@@ -3,6 +3,10 @@
 For information on business/workplace approaches.
 Like the Harvard Business Review or Insider magazine.
 
+## Heilmeier catechism
+
+A DARPA approach to thinking through research programs. See [here](https://www.darpa.mil/about/heilmeier-catechism)
+
 ## Debunking McKinsey report 
 McKinsey research that 'found comapnies with diverse leadership teams performed better than rivals' was flawed and should not be 'relied on' academics have found.
 
