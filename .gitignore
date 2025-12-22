@@ -5,6 +5,7 @@
 !/technology_notes
 !/misc_notes
 !/hacking_ai
+!/ac_notes
 technology_notes/*
 !technology_notes/*.md
 data_science_notes/*
@@ -13,5 +14,7 @@ misc_notes/*
 !misc_notes/*.md
 hacking_ai/*
 !hacking_ai/*.md
+!ac_notes/*.md
 !README.md
+
 
