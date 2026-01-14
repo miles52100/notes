@@ -15,7 +15,7 @@
 
 ### data lake
 
-- heterogenuou
+- heterogeneous
 - stored in raw form, usually blobs
 - usually a single store of data
 
